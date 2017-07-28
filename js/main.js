@@ -29,8 +29,7 @@ function user (prenom ,nom ,age ,pays ,moyenDePaiement ){
    alert(2017-this.age);
  }
 }
-var user1=new user(" nicolas . "," urbaniak . ", 38  ," FRANCE .",
-" ( cb , master card , bitcoins .)");
+var user1=new user(" nicolas . "," urbaniak . ", 38  ," FRANCE " , [ "cb" , " master card" , "bitcoins" ]);
 // user1.getName();
 user1.année();
 
@@ -45,7 +44,8 @@ function comparaison (pays ,age ,moyenDePaiement){
   };
 
 };
-  var comparaitre=new comparaison(" FRANCE .",18,"cb");
+  var comparaitre=new comparaison([" FRANCE ", "BELGIQUE"
+  ,"ALLEMAGNE",],18, " master card");
 
   /*---------------AGE-DU-CLIENT----------------*/
 if(comparaitre.age<user1.age){
@@ -54,15 +54,34 @@ if(comparaitre.age<user1.age){
   else{
   alert("vous etes trop jeune.");
   /*---------------PAYS--------------------------*/
-};
-if(comparaitre.pays!=user1.pays){
-  alert("vous n'etes pas au bon endroit")
 }
-else {
-  alert("bienvenue");
-};
-/*--------------------METHODE-DE-PAIEMENT----------------*/
+  var compteur= 0;
+  for (let i = 0; i < comparaitre.pays.length; i++) {
+    if(user1.pays==comparaitre.pays[i]){
+        compteur++;
+        break;}
+        }
+    if(compteur){
+      alert("good country");
+    }
+    else {
+      alert("vous n'etes pas au bon endroit");
+    };
 
+
+/*--------------------METHODE-DE-PAIEMENT----------------*/
+var compteur1=0;
+for(let j=0; j < comparaitre.moyenDePaiement.length; j++){
+  if (user1.moyenDePaiement==comparaitre.moyenDePaiement [j]) {
+  compteur1++;
+  break;}
+}
+if(compteur){
+  alert("vos moyens de paiements sont accepté");
+}
+else{
+  alert("vos moyens de paiment ne nous convienent pas");
+}
 /*----------------------USER-2-----------------------------*/
 
 // var user2=new user("Prenom : rocco / "," nom : sifredi / age : ", 45 ,"ans / pays : italie / "," moyen de Paiement : NATURE .");
